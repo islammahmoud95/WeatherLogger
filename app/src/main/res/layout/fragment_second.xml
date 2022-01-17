@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.weatherlogger.ui.activity.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragments.home.SecondFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="@dimen/_10sdp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_margin="@dimen/_7sdp"
+                        android:textSize="@dimen/_14ssp"
+                        android:textColor="@color/black"
+                        android:text="@{@string/name(viewModel.currentWeather.name)}"
+                        />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/temp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/name"
+                        android:layout_margin="@dimen/_7sdp"
+                        android:textSize="@dimen/_14ssp"
+                        android:textColor="@color/purple_500"
+                        android:gravity="center"
+                        android:text="@{@string/temperature(viewModel.currentWeather.main.temp)}"
+                        />
+
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/weatherText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/temp"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:textSize="@dimen/_14ssp"
+                    android:textColor="@color/black"
+                    android:text="@string/weather"
+                    />
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/weatherList"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintTop_toBottomOf="@id/weatherText"
+                   />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/mainTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/weatherList"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:textSize="@dimen/_14ssp"
+                    android:textColor="@color/black"
+                    android:text="@string/mainWeather"
+                    />
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guid1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintGuide_percent=".5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="parent"
+                    android:orientation="vertical"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/maxTemp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/guid1"
+                    app:layout_constraintTop_toBottomOf="@id/mainTxt"
+                    android:layout_marginRight="@dimen/_7sdp"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:textSize="@dimen/_14ssp"
+                    android:textColor="@color/purple_500"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:text="@{@string/maxTemp(viewModel.currentWeather.main.temp_max)}"
+
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/minTemp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/guid1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBaseline_toBaselineOf="@id/maxTemp"
+                    android:layout_marginRight="@dimen/_7sdp"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:textSize="@dimen/_14ssp"
+                    android:textColor="@color/purple_500"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:text="@{@string/minTemp(viewModel.currentWeather.main.temp_min)}"
+
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/humidity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/guid1"
+                    app:layout_constraintTop_toBottomOf="@id/maxTemp"
+                    android:layout_marginRight="@dimen/_7sdp"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:textSize="@dimen/_14ssp"
+                    android:textColor="@color/purple_500"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:text="@{@string/humidity(viewModel.currentWeather.main.humidity)}"
+
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/pressure"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/guid1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBaseline_toBaselineOf="@id/humidity"
+                    android:layout_marginRight="@dimen/_7sdp"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:textSize="@dimen/_14ssp"
+                    android:textColor="@color/purple_500"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:text="@{@string/pressure(viewModel.currentWeather.main.pressure)}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

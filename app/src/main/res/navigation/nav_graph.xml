@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FirstFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.example.weatherlogger.ui.fragments.home.FirstFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment"
+            app:enterAnim="@anim/slidetoup"
+            app:exitAnim="@anim/slide_left_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="com.example.weatherlogger.ui.fragments.home.SecondFragment"
+        android:label="@string/more_details"
+        tools:layout="@layout/fragment_second">
+
+        <argument
+            android:name="cityId"
+            app:argType="integer"
+            android:defaultValue="0" />
+
+
+    </fragment>
+</navigation>

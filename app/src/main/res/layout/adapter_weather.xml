@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="result"
+            type="com.example.domain.entities.weather.Weather" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_7sdp">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/weatherImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="@dimen/_7sdp"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/purple_500"
+            android:text="@string/weather"
+            app:image="@{result.icon}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/weatherDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/weatherImg"
+            app:layout_constraintTop_toTopOf="@id/weatherImg"
+            app:layout_constraintBottom_toBottomOf="@id/weatherImg"
+            android:layout_marginRight="@dimen/_7sdp"
+            android:layout_marginLeft="@dimen/_7sdp"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/purple_500"
+            android:text="@{result.description}"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
